@@ -5,15 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tic Tac Toe</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+        h3 {
+            text-align: center;
+        }
+        select {
+            text-align: center;
+            margin-left: 45%;
+        }
+    </style>
 </head>
 <body>
     <h1 class="title">Welcome To TicTacToe!</h1>
+    <h3>Choose your killer</h3>
+    <select name="player" id="">
+        <option value="rock">Rock</option>
+        <option value="paper">Paper</option>
+        <option value="scissors">Scissors</option>
+    </select>
     
 
 
     <script>
-        let playerChoice = prompt('Rock, Paper, or Scissors?').toLowerCase();
-
         function playRound(computerPlay, playerChoice, winner){
             playerChoice();
             computerPlay();
@@ -33,8 +54,8 @@
         }
 
         function playerChoice(){
-            let userChoice = prompt('Rock, Paper, or Scissors?').toLowerCase();
-            return userChoice;
+            let userChoice = prompt('Rock, Paper, or Scissors?');
+            return userChoice.toLowerCase();
         }
 
         function winner(playerChoice, computerPlay){
