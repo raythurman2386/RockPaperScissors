@@ -23,21 +23,27 @@
 
         button {
             align-self: center;
-            margin-left: 44%;
+            margin-left: 45%;
+            border: none;
+            padding: 8px 12px;
+            background: black;
+            color: white;
         }
 
-        h3 {
+        h2 {
             text-align: center;
         }
 
         select {
             text-align: center;
             margin-left: 45%;
+            border: none;
+            padding: 8px 12px;
         }
 
         p {
             text-align: center;
-            font-weight: 400;
+            font-weight: 550;
         }
 
         i {
@@ -56,7 +62,7 @@
         <p><i class="fas fa-hand-paper"></i>Paper Covers Rock<i class="fas fa-hand-rock"></i></p>
         <p><i class="fas fa-hand-scissors"></i>Scissors Cut Paper<i class="fas fa-hand-paper"></i></p>
     </div>
-    <h3>Choose your killer</h3>
+    <h2>Choose your killer</h2>
     <select name="player" class="select">
         <option value="rock">Rock</option>
         <option value="paper">Paper</option>
@@ -69,13 +75,13 @@
         function playGame(computerPlay, playerChoice, winner) {
             computerPlay();
             playerChoice();
-            winner(computerPlay, playerChoice);
+            console.log(winner(computerPlay, playerChoice));
 
             function computerPlay() {
-                choice = Math.floor(Math.random() * 10) - 1;
-                if (choice === 1 || choice === 3 || choice === 5) {
+                choice = Math.floor(Math.random() * 10) - 7;
+                if (choice === 1) {
                     return 'rock';
-                } else if (choice === 0 || choice === 2 || choice === 4) {
+                } else if (choice === 0) {
                     return 'paper';
                 } else {
                     return 'scissors';
@@ -89,19 +95,19 @@
 
             function winner(playerChoice, computerPlay) {
                 if (playerChoice === 'rock' && computerPlay === 'scissors') {
-                    console.log('You Win! Rock smashes scissors.');
+                    return 'You Win! Rock smashes scissors.';
                 } else if (playerChoice === 'rock' && computerPlay === 'paper') {
-                    console.log('You Loose! Paper wraps rock.');
+                    return 'You Loose! Paper wraps rock.';
                 } else if (playerChoice === 'paper' && computerPlay === 'scissors') {
-                    console.log('You Loose! Scissors cut paper.');
+                    return 'You Loose! Scissors cut paper.';
                 } else if (playerChoice === 'paper' && computerPlay === 'rock') {
-                    console.log('You Win! Paper covers rock.');
+                    return 'You Win! Paper covers rock.';
                 } else if (playerChoice === 'scissors' && computerPlay === 'rock') {
-                    console.log('You Loose! Rock smashes scissors.');
+                    return 'You Loose! Rock smashes scissors.'
                 } else if (playerChoice === 'scissors' && computerPlay === 'paper') {
-                    console.log('You Win! Scissors cut paper.');
+                    return 'You Win! Scissors cut paper.';
                 } else {
-                    console.log('Computer Wins!!!')
+                    return 'Computer Wins';
                 }
             }
         }
