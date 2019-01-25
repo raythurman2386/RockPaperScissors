@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+    <h1 class="title">Welcome To TicTacToe!</h1>
+    
+
+
+    <script>
+        let playerChoice = prompt('Rock, Paper, or Scissors?').toLowerCase();
+
+        function playRound(computerPlay, playerChoice, winner){
+            playerChoice();
+            computerPlay();
+            winner(playerChoice, computerPlay);
+            
+        }
+
+        function computerPlay(){
+            choice = Math.floor(Math.random() * 10) - 1;
+            if(choice === 1 || choice === 3 || choice === 5){
+                return 'rock';
+            } else if(choice === 0 || choice === 2 || choice === 4) {
+                return 'paper';
+            } else {
+                return 'scissors';
+            }
+        }
+
+        function playerChoice(){
+            let userChoice = prompt('Rock, Paper, or Scissors?').toLowerCase();
+            return userChoice;
+        }
+
+        function winner(playerChoice, computerPlay){
+            if(playerChoice === 'rock' && computerPlay === 'scissors'){
+                console.log('You Win! Rock smashes scissors.');
+            } else if (playerChoice === 'rock' && computerPlay === 'paper'){
+                console.log('You Loose! Paper wraps rock.');
+            } else if (playerChoice === 'paper' && computerPlay === 'scissors'){
+                console.log('You Loose! Scissors cut paper.');
+            } else if (playerChoice === 'paper' && computerPlay === 'rock'){
+                console.log('You Win! Paper covers rock.');
+            } else if (playerChoice === 'scissors' && computerPlay === 'rock'){
+                console.log('You Loose! Rock smashes scissors.');
+            } else if (playerChoice === 'scissors' && computerPlay === 'paper'){
+                console.log('You Win! Scissors cut paper.');
+            } else {
+                console.log('Computer Wins!!!')
+            }
+        }
+    </script>
+</body>
+</html>
