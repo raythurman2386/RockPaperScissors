@@ -1,67 +1,27 @@
-body {
+#container {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.btn {
+    margin: 20px auto;
+}
+
+#btn-wrapper {
+    margin: 0 auto;
+    width: 50%;
+}
+
+p {
     margin: 0;
-    padding: 0;
-    background: #333;
-    color: white;
-    margin-top: 10%;
-}
-
-.title {
     text-align: center;
 }
 
-.play {
-    display: flex;
-    justify-content: center;
-    padding: 12px 16px;
-}
-
-#score1 {
-    float: left;
-    border: 1px solid white;
-    padding: 40px;
-    margin-left: 25px;
-    border-radius: 15%;
-    background: #f3f3f3;
-    color: black;
-}
-
-#score2 {
-    float: right;
-    border: 1px solid white;
-    padding: 40px;
-    margin-right: 25px;
-    border-radius: 15%;
-    background: #f3f3f3;
-    color: black;
-}
-
-.info {
+h2 {
     text-align: center;
 }
 
-.buttons {
-    display: flex;
-    justify-content: center;
-    padding: 40px;
-}
-
-.rock {
-    padding: 40px;
-    margin: 5px;
-}
-
-.paper {
-    padding: 40px;
-    margin: 5px;
-}
-
-.scissors {
-    padding: 40px;
-    margin: 5px;
-}
-
-
-.winner {
-    text-align: center;
+#win-message {
+    margin-top: 20px;
+    font-size: 2em;
 }
