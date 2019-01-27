@@ -1,89 +1,103 @@
-var loses = 0;
-var wins = 0;
+let winHead = document.querySelector('h3')
+let playerScoreHead = document.querySelector('#score1')
+let compScoreHead = document.querySelector('#score2')
+var button = document.querySelectorAll('#buttons')
 
-var play = function (userChoice) {
+button.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        console.log(button.className);
+    });
+});
 
-    document.getElementById("player").innerHTML = "";
-    document.getElementById("opponent").innerHTML = "";
-    document.getElementById("results").innerHTML = "";
-
-
-    if (userChoice == "rock" || userChoice == "paper" || userChoice == "scissors") {
-        document.getElementById("player").innerHTML = 'You chose' + ' ' + userChoice + '.';
-    } else if (userChoice == "rope") {
-        document.getElementById("player").innerHTML = 'You chose' + ' ' + userChoice + '. <br />Well aren\'t you a smarty pants.';
+function computerPlay() {
+    choice = Math.random();
+    if (choice <= 0.33) {
+        return 'rock';
+    } else if (choice <= 0.66) {
+        return 'paper';
     } else {
-        document.getElementById("player").innerHTML = "That is not a valid choice, try again.";
-
-        return false;
+        return 'scissors';
     }
+}
 
-    var computerChoice = Math.random();
-    if (computerChoice < 0.34) {
-        computerChoice = "rock";
-    } else if (computerChoice <= 0.67) {
-        computerChoice = "paper";
+function playerChoice() {
+    result = prompt('Choose Rock, paper, or scissors: ');
+    return result = result.toLowerCase();
+    // alert(playerChoice)
+};
+
+
+function winner(playerChoice, computerPlay) {
+    if (playerChoice == "rock" && computerPlay == "scissors") {
+        winHead.textContent = "You win! Rocks beats scissors"
+        return "You win! Rocks beats scissors"
+    }
+    if (playerChoice == "rock" && computerPlay == "paper") {
+        winHead.textContent = "You lose! Paper beats rock"
+        return "You lose! Paper beats rock"
+    }
+    if (playerChoice == "paper" && computerPlay == "rock") {
+        winHead.textContent = "You win! Paper beats rock"
+        return "You win! Paper beats rock"
+    }
+    if (playerChoice == "paper" && computerPlay == "scissors") {
+        winHead.textContent = "You lose! Scissors beats paper"
+        return "You lose! Scissors beats paper"
+    }
+    if (playerChoice == "scissors" && computerPlay == "rock") {
+        winHead.textContent = "You lose! Rock beats scissors"
+        return "You lose! Rock beats scissors"
+    }
+    if (playerChoice == "scissors" && computerPlay == "paper") {
+        winHead.textContent = "You win!  Scissors beats paper "
+        return "You win!  Scissors beats paper "
+    }
+    if (playerChoice == computerPlay) {
+        winHead.textContent = "It's a tie. No one scores"
+        return "It's a tie. No one Scores"
+    }
+}
+
+function validateInput(input) {
+    if (input != "paper" && input != "scissors" && input != "rock") {
+        console.log("Wrong input")
+        personPlay()
     } else {
-        computerChoice = "scissors";
+        return input
     }
+}
 
-    document.getElementById("opponent").innerHTML = '// Your opponent chose' + ' ' + computerChoice + '.';
+function endscore(computerScore, playerScore) {
+    if (computerScore > playerScore) {
+        message = "You lost"
+    } else if (computerScore < playerScore) {
+        message = "You won "
+    } else {
+        message = "Its a tie"
+    }
+    winHead.textContent = message + " : " + playerScore + " against " + computerScore
+}
 
-    var compare = function (choice1, choice2) {
-        if (choice1 == choice2) {
-            return "The result is a tie!";
-        } else if (choice1 == "rock") {
-            if (choice2 == "scissors") {
-                wins++;
-                return "rock wins. rock on.";
-            } else {
-                loses++;
-                return "sorry. paper wins.";
-            }
-        } else if (choice1 == "paper") {
-            if (choice2 == "rock") {
-                wins++;
-                return "paper wins";
-            } else {
-                loses++;
-                return "sorry. scissors win.";
-            }
-        } else if (choice1 == "scissors") {
-            if (choice2 == "rock") {
-                loses++;
-                return "sorry. rock wins";
-            } else {
-                wins++;
-                return "scissors win";
-            }
-        } else if (choice1 == "rope") {
-            wins++;
-            return "rope FTW";
-        } else {
-            return "error. bummer dude. game over. no dice.";
+function playGame() {
+    let playerScore = 0
+    let computerScore = 0
+    for (i = 1; i <= 5; i++) {
+        let computerChoice = computerPlay()
+        let personChoice = playerChoice()
+        let checkedChoicePerson = validateInput(personChoice)
+        solution = winner(checkedChoicePerson, computerChoice)
+        console.log(solution)
+        if (solution.includes("win")) {
+            playerScore++;
+            playerScoreHead.textContent = playerScore;
+
         }
-    };
-
-    var winner = compare(userChoice, computerChoice);
-    document.getElementById("results").innerHTML = winner;
-    document.getElementById("wins").innerHTML = wins;
-    document.getElementById("loses").innerHTML = loses;
-
-    if (wins > 99 || loses > 99) {
-        document.getElementById("wins").style.fontSize = "44";
-        document.getElementById("loses").style.fontSize = "44";
+        if (solution.includes("lose")) {
+            computerScore++
+            compScoreHead.textContent = computerScore;
+        }
     }
-    if (wins > 999) {
-        alert("You reached the max score of 999. <br />Congratulations, you have no life.");
-    }
-    if (loses > 999) {
-        alert("Your opponent reached the max score of 999. <br />We're sorry, you have no life.");
-    }
-};
+    endscore(computerScore, playerScore)
 
-var reset = function () {
-    loses = 0;
-    wins = 0;
-    document.getElementById("wins").innerHTML = wins;
-    document.getElementById("loses").innerHTML = loses;
-};
+}
+playGame()
