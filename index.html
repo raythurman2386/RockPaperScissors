@@ -56,7 +56,7 @@
 
 <body>
     <h1 class="title">Welcome To Rock Paper Scissors!</h1>
-    <button>PLAY GAME</button>
+    <button id="play" onclick="playGame()">PLAY GAME</button>
     <div class="outcomes">
         <p><i class="fas fa-hand-rock"></i>Rock Smashes Scissors<i class="fas fa-hand-scissors"></i></p>
         <p><i class="fas fa-hand-paper"></i>Paper Covers Rock<i class="fas fa-hand-rock"></i></p>
@@ -72,13 +72,15 @@
     <p></p>
 
     <script>
+        let para = document.querySelector('p')
+
         function playGame(computerPlay, playerChoice, winner) {
             computerPlay();
             playerChoice();
             console.log(winner(computerPlay, playerChoice));
 
             function computerPlay() {
-                choice = Math.floor(Math.random() * 10) - 7;
+                choice = Math.random() * 10;
                 if (choice === 1) {
                     return 'rock';
                 } else if (choice === 0) {
@@ -95,22 +97,23 @@
 
             function winner(playerChoice, computerPlay) {
                 if (playerChoice === 'rock' && computerPlay === 'scissors') {
-                    return 'You Win! Rock smashes scissors.';
+                    alert('You Win! Rock smashes scissors.');
                 } else if (playerChoice === 'rock' && computerPlay === 'paper') {
-                    return 'You Loose! Paper wraps rock.';
+                    alert('You Loose! Paper wraps rock.');
                 } else if (playerChoice === 'paper' && computerPlay === 'scissors') {
-                    return 'You Loose! Scissors cut paper.';
+                    alert('You Loose! Scissors cut paper.');
                 } else if (playerChoice === 'paper' && computerPlay === 'rock') {
-                    return 'You Win! Paper covers rock.';
+                    alert('You Win! Paper covers rock.');
                 } else if (playerChoice === 'scissors' && computerPlay === 'rock') {
-                    return 'You Loose! Rock smashes scissors.'
+                    alert('You Loose! Rock smashes scissors.');
                 } else if (playerChoice === 'scissors' && computerPlay === 'paper') {
-                    return 'You Win! Scissors cut paper.';
+                    alert('You Win! Scissors cut paper.');
                 } else {
-                    return 'Computer Wins';
+                    para.textContent = "IT'S A TIE!!";
                 }
             }
         }
+        playGame()
     </script>
 </body>
 
