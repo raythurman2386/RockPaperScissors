@@ -1,67 +1,55 @@
-body {
+* {
     margin: 0;
     padding: 0;
+}
+
+body {
     background: #333;
     color: white;
-    margin-top: 10%;
 }
 
-.title {
+.container {
+    width: 100%;
+    align-content: center;
     text-align: center;
+    margin: 25px;
 }
 
-.play {
-    display: flex;
-    justify-content: center;
+.rules {
+    margin-top: 40px;
+    line-height: 1.5em;
+}
+
+button {
+    border: none;
     padding: 12px 16px;
+    border-radius: 25%;
+    margin-left: 10px;
+    background-color: #7c7c7c;
+    color: white;
+    box-shadow: 2px 1px 1px red;
 }
 
-#score1 {
-    float: left;
-    border: 1px solid white;
-    padding: 40px;
-    margin-left: 25px;
-    border-radius: 15%;
-    background: #f3f3f3;
-    color: black;
+button:hover {
+    box-shadow: 4px 2px 2px red;
+    border: .5px solid red;
+    border-radius: 25%;
 }
 
-#score2 {
-    float: right;
-    border: 1px solid white;
-    padding: 40px;
-    margin-right: 25px;
-    border-radius: 15%;
-    background: #f3f3f3;
-    color: black;
+button:active {
+    background-color: #7c7c7c;
+    box-shadow: 1px 0 0 red;
+    transform: translateY(4px);
 }
 
-.info {
-    text-align: center;
+.btn {
+    margin-top: 40px;
 }
 
-.buttons {
-    display: flex;
-    justify-content: center;
-    padding: 40px;
+.player-btn {
+    margin-top: 40px;
 }
 
-.rock {
-    padding: 40px;
+.icon {
     margin: 5px;
-}
-
-.paper {
-    padding: 40px;
-    margin: 5px;
-}
-
-.scissors {
-    padding: 40px;
-    margin: 5px;
-}
-
-
-.winner {
-    text-align: center;
 }

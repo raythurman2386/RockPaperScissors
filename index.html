@@ -6,36 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rock Paper Scissors</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-        crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+        crossorigin="anonymous">
 </head>
 
 <body>
+    <div class="container">
+        <h1 class="name">Welcome To Rock Paper Scissors!</h1>
+        <div class="rules">
+            <p><i class="icon far fa-hand-rock"></i>Rock smashes Scissors<i class="icon far fa-hand-scissors"></i></p>
+            <p><i class="icon far fa-hand-paper"></i>Paper covers Rock<i class="icon far fa-hand-rock"></i></p>
+            <p><i class="icon far fa-hand-scissors"></i>Scissors cut Paper<i class="icon far fa-hand-paper"></i></p>
+        </div>
+        <div class="btn">
+            <button class="play" onclick="playRound();">Play</button>
+        </div>
+        <div class="player-btn">
+            <button class="rock">Rock</button>
+            <button class="paper">Paper</button>
+            <button class="scissors">Scissors</button>
+        </div>
 
-    <h1 class="title center">Welcome To Rock Paper Scissors!</h1>
-    <div id="score1">Player</div>
-    <div id="score2">Computer</div>
-    <div class="play">
-        <button id="play" onclick="playGame()">PLAY GAME</button>
+        <div class="results">
+            <p class="player-score"></p>
+            <p class="computer-score"></p>
+            <p class="winner"></p>
+        </div>
+
     </div>
 
-    <div class="info">
-        <p><i class="fas fa-hand-rock"></i>Rock Smashes Scissors<i class="fas fa-hand-scissors"></i></p>
-        <p><i class="fas fa-hand-paper"></i>Paper Covers Rock<i class="fas fa-hand-rock"></i></p>
-        <p><i class="fas fa-hand-scissors"></i>Scissors Cut Paper<i class="fas fa-hand-paper"></i></p>
-    </div>
 
-    <h2 class="info">Choose your killer</h2>
-
-    <div class="buttons">
-        <button id="btn" class="rock">ROCK</button>
-        <button id="btn" class="paper">PAPER</button>
-        <button id="btn" class="scissors">SCISSORS</button>
-    </div>
-
-    <h3 class="winner"></h3>
 
     <script type="text/javascript" src="main.js"></script>
 </body>
