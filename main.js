@@ -1,91 +1,78 @@
-const message = document.querySelector("#game-message");
-const winMessage = document.querySelector('#win-message');
-const lineBreak = document.createElement("br");
-const currentRound = document.querySelector('#round');
-
-let playerScore = 0;
-let computerScore = 0;
-let round = 1;
-
-// render html round 1
-currentRound.textContent = `Round ${round}`;
-
-// Called onclick event
-function game(playerSelection) {
-
-    round++;
-    currentRound.textContent = `Round ${round}`;
-
-    gamePlay(playerSelection, computerPlay());
-}
-
-function gamePlay(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-
-    if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        playerScore++;
-        message.innerHTML = "You Win! Rock beats scissors!" + `<br>` +
-            `Your Score: ${playerScore}` + `<br>` + `Computer Score: ${computerScore}`;
-    } else if (playerSelection === 'rock' && computerSelection === 'paper') {
-        computerScore++;
-        message.innerHTML = "You Lose! Paper beats rock!" + `<br>` +
-            `Your Score: ${playerScore}` + `<br>` + `Computer Score: ${computerScore}`;
-    } else if (playerSelection === 'rock' && computerSelection === 'rock') {
-        message.innerHTML = "It's a draw! Rock vs rock." + `<br>` +
-            `Your Score: ${playerScore}` + `<br>` + `Computer Score: ${computerScore}`;
-    } else if (playerSelection === 'scissors' && computerSelection === 'scissors') {
-        message.innerHTML = "It's a draw! Scissors vs scissors." + `<br>` +
-            `Your Score: ${playerScore}` + `<br>` + `Computer Score: ${computerScore}`;
-    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        playerScore++;
-        message.innerHTML = "You win! Scissors beats paper!" + `<br>` +
-            `Your Score: ${playerScore}` + `<br>` + `Computer Score: ${computerScore}`;
-    } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        computerScore++;
-        message.innerHTML = "You lose! rock beats scissors!" + `<br>` +
-            `Your Score: ${playerScore}` + `<br>` + `Computer Score: ${computerScore}`;
-    } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        computerScore++;
-        message.innerHTML = "You lose! Scissors beats paper!" + `<br>` +
-            `Your Score: ${playerScore}` + `<br>` + `Computer Score: ${computerScore}`;
-    } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        playerScore++;
-        message.innerHTML = "You Win! Paper beats rock!" + `<br>` +
-            `Your Score: ${playerScore}` + `<br>` + `Computer Score: ${computerScore}`;
-    } else if (playerSelection === 'paper' && computerSelection === 'paper') {
-        message.innerHTML = "It's a draw! Paper vs paper." + `<br>` +
-            `Your Score: ${playerScore}` + `<br>` + `Computer Score: ${computerScore}`;
-    } else {
-        return "error";
-    }
-
-    isThereAWinner();
-}
+let winHead = document.querySelector('h3');
+let playerScoreHead = document.querySelector('#score1');
+let compScoreHead = document.querySelector('#score2');
+var rock = document.getElementById('rock');
+var paper = document.getElementById('paper');
+var scissors = document.getElementById('scissors');
 
 function computerPlay() {
-    options = ['rock', 'paper', 'scissors'];
-    randomOption = Math.floor(Math.random() * 3);
-    return options[randomOption];
+    var choices = ['rock', 'paper', 'scissors'];
+    result = choices[Math.floor(Math.random() * choices.length)]
+    return result;
 }
 
-const isThereAWinner = () => {
-    if (playerScore >= 5 || computerScore >= 5) {
-        if (playerScore > computerScore) {
-            winMessage.textContent = "You Won the Match!";
-        } else if (playerScore < computerScore) {
-            winMessage.textContent = "The Computer Won the Match!";
-        } else {
-            winMessage.textContent = "The match was a draw!";
-        }
+let playerChoice = () => {
+    result = prompt('Pick Rock, Paper, or Scissors');
+    return result;
+}
+
+
+function winner(playerChoice, computerPlay) {
+    if (playerChoice == "rock" && computerPlay == "scissors" || playerChoice == "paper" && computerPlay == "rock" ||
+        playerChoice == "scissors" && computerPlay == "paper") {
+        winHead.textContent = `You win! ${playerChoice} beats ${computerPlay}`;
+        return `You win! ${playerChoice} beats ${computerPlay}`;
+    } else if (playerChoice == "rock" && computerPlay == "paper" ||
+        playerChoice == "paper" && computerPlay == "scissors" ||
+        playerChoice == "scissors" && computerPlay == "rock") {
+        winHead.textContent = `You lose! ${computerPlay} beats ${playerChoice}`
+        return `You lose! ${computerPlay} beats ${playerChoice}`;
+    } else {
+        winHead.textContent = "It's a tie. No one scores"
+        return "It's a tie. No one Scores"
     }
 }
 
-// Call game function when html buttons are clicked
-const buttons = document.querySelectorAll('button');
-buttons.forEach((item) => {
-    // Target the individual button names, pass as playerSelection
-    item.addEventListener('click', (e) => {
-        game(e.target.name);
-    });
+function validateInput(input) {
+    if (input != "paper" && input != "scissors" && input != "rock") {
+        console.log("Wrong input")
+        playerChoice();
+    } else {
+        return input;
+    }
+}
 
-});
+function endscore(computerScore, playerScore) {
+    if (computerScore > playerScore) {
+        message = "You lost";
+    } else if (computerScore < playerScore) {
+        message = "You won ";
+    } else {
+        message = "Its a tie";
+    }
+    winHead.textContent = message + " : " + playerScore + " against " + computerScore
+}
+
+function playGame() {
+    let playerScore = 0
+    let computerScore = 0
+    for (i = 1; i <= 5; i++) {
+        let computerChoice = computerPlay()
+        let personChoice = playerChoice()
+        let checkedChoicePerson = validateInput(personChoice)
+        solution = winner(checkedChoicePerson, computerChoice)
+        console.log(solution)
+        if (solution.includes("win")) {
+            playerScore++;
+            playerScoreHead.textContent = playerScore;
+
+        }
+        if (solution.includes("lose")) {
+            computerScore++
+            compScoreHead.textContent = computerScore;
+        }
+    }
+    endscore(computerScore, playerScore)
+
+}
+playGame()

@@ -5,31 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css" type="text/css">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-
-
-    <main>
-        <div id="container">
-            <h2>The Legendary: Rock Paper Scissors!</h2>
-            <p id="round"></p>
-            <div id="btn-wrapper">
-                <button class="btn" name="rock">rock</button>
-                <button class="btn" name="paper">paper</button>
-                <button class="btn" name="scissors"> scissors</button>
+    <div class="main">
+        <div class="content">
+            <h1 class="title center">Welcome To Rock Paper Scissors!</h1>
+            <div id="score1">Player</div>
+            <div id="score2">Computer</div>
+            <div class="play">
+                <button id="play" onclick="playGame()">PLAY GAME</button>
             </div>
-        </div>
-        <div id="results">
-            <p id='game-message'></p>
-            <p id="win-message"></p>
-        </div>
-    </main>
 
+            <div class="info">
+                <p><i class="fas fa-hand-rock"></i>Rock Smashes Scissors<i class="fas fa-hand-scissors"></i></p>
+                <p><i class="fas fa-hand-paper"></i>Paper Covers Rock<i class="fas fa-hand-rock"></i></p>
+                <p><i class="fas fa-hand-scissors"></i>Scissors Cut Paper<i class="fas fa-hand-paper"></i></p>
+            </div>
 
-    <script src="main.js"></script>
+            <h2 class="info">Choose your killer</h2>
+
+            <div class="buttons">
+                <button id="rock" class="btn">ROCK</button>
+                <button id="paper" class="btn">PAPER</button>
+                <button id="scissors" class="btn">SCISSORS</button>
+            </div>
+
+            <h3 class="winner"></h3>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="main.js"></script>
 </body>
 
 </html>
