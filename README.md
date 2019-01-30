@@ -1,1 +1,1 @@
-Creating a bisic tictactoe game for TheOdinProject
+Creating a basic rock, paper, scissor game for TheOdinProject
